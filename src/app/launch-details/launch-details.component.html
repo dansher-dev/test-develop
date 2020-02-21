@@ -1,0 +1,40 @@
+<div class="details-container" *ngIf="launchDetails$ | async as launchDetails">
+  <section style="padding-top: 20px;">
+    <div class="title">
+      <a routerLink="/"><i class="material-icons">
+        keyboard_arrow_left
+      </i></a>
+      <div>{{ launchDetails.mission_name }}</div>
+    </div>
+    <mat-card>
+      <img
+        height="206"
+        width="206"
+        class="description-image"
+        mat-card-image
+        [src]="launchDetails.links.mission_patch"
+        alt="Mission patch of {{ launchDetails.mission_name }}"
+      />
+      <mat-card-content>
+        <p>{{ launchDetails.details }}</p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  <section>
+    <img class="image-open" [src]="launchDetails.links.flickr_images[imageIndex]" alt="">
+    <div class="photo-grid">
+      <i class="material-icons" (click)="onIndexUpdate('-', launchDetails.links.flickr_images.length)">
+        keyboard_arrow_left
+      </i>
+      <img
+        *ngFor="let pic of launchDetails.links.flickr_images"
+        [src]="pic"
+        alt="Picture of {{ launchDetails.mission_name }}"
+        loading="lazy"
+      />
+      <i class="material-icons" (click)="onIndexUpdate('+', launchDetails.links.flickr_images.length)">
+        keyboard_arrow_right
+      </i>
+    </div>
+  </section>
+</div>
