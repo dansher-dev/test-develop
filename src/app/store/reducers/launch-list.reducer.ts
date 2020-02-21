@@ -7,20 +7,20 @@ import {
   setID,
   pushData,
 } from "../actions";
-import {ILaunchDetails, ILaunchPast} from "../../data.models";
+import {Launch} from "../../services/spacexGraphql.service";
 
 export interface IState {
-  data: ILaunchPast[];
-  launchDetails: ILaunchDetails[];
+  data: Launch[];
+  launchDetails: Launch[];
   selectedId: string;
   loaded: boolean;
   loading: boolean;
   error: any;
 }
 
-export type LaunchListState = IState;
+export type LaunchListState = any;
 
-const initialState: LaunchListState = {
+const initialState: IState = {
   data: [],
   launchDetails: [],
   selectedId: null,
@@ -59,7 +59,7 @@ const launchListReducer = createReducer(
 );
 
 export function reducer(
-  state: LaunchListState | undefined,
+  state: IState,
   action: LaunchListAction
 ) {
   return launchListReducer(state, action);

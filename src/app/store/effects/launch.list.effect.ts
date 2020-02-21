@@ -1,4 +1,4 @@
-import { PastLaunchesListGQL } from "../../services/spacexGraphql.service";
+import {Launch, PastLaunchesListGQL} from "../../services/spacexGraphql.service";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import {
@@ -8,7 +8,6 @@ import {
 } from "../actions";
 import { catchError, map, switchMap } from "rxjs/operators";
 import { of } from "rxjs";
-import {ILaunchPast} from "../../data.models";
 
 @Injectable()
 export class LaunchEffects {
@@ -24,7 +23,7 @@ export class LaunchEffects {
         this.pastLaunchesService.fetch({ limit: 30 }).pipe(
           map((response: any) =>
             loadLaunchListSuccess({
-              payload: response.data.launchesPast as ILaunchPast[]
+              payload: response.data.launchesPast as Launch[]
             })
           ),
           catchError(error => of(loadLaunchListFail(error)))

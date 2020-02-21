@@ -1,4 +1,4 @@
-<ng-container *ngIf="!(isLoading$ | async) && (pastLaunches$ | async) as pastLaunches; else loadingPlaceholder">
+<ng-container *ngIf="(isLoading$ | async) === false && (pastLaunches$ | async) as pastLaunches; else loadingPlaceholder">
   <main>
     <section class="container">
       <mat-card

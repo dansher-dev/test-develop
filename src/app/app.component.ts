@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-spacex-graphql-codegen';
-  test = new Date();
 }

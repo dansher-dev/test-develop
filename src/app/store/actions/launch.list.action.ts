@@ -1,11 +1,11 @@
 import { createAction, props } from "@ngrx/store";
-import {ILaunchDetails, ILaunchPast} from "../../data.models";
+import {Launch} from "../../services/spacexGraphql.service";
 
 export const loadLaunchList = createAction("[Launch] Load Launch List");
 
 export const loadLaunchListSuccess = createAction(
   "[Launch] Load Launch List Success",
-  props<{ payload: ILaunchPast[] }>()
+  props<{ payload: Launch[] }>()
 );
 
 export const loadLaunchListFail = createAction(
@@ -20,7 +20,7 @@ export const setID = createAction(
 
 export const pushData = createAction(
   "Push details data",
-  props<{launchDetails: any}>()
+  props<{launchDetails: Launch}>()
 );
 
 export type LaunchListAction =
